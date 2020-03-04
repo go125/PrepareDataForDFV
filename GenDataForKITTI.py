@@ -38,7 +38,7 @@ base_path = "/home/ubuntu/data/raw_data/"
 ROOT_DIR = os.path.abspath("../Mask_RCNN")
 # result WIDTH and HEIGHT
 WIDTH = 416
-HEIGHT = 192
+HEIGHT = 128
 # calib_cam_to_cam.txt path
 INPUT_TXT_FILE="./train_data_example/20200219/calib_cam_to_cam.txt"
 # result seq length
@@ -46,9 +46,9 @@ SEQ_LENGTH = 3
 # result step size
 STEPSIZE = 1
 #result output dir
-OUTPUT_DIR = '/home/ubuntu/data/kitti_result3'
+OUTPUT_DIR = '/home/ubuntu/data/kitti_result4'
 #temp data dir
-TEMP_DIR="/home/ubuntu/data/train_data_example2/"
+TEMP_DIR="/home/ubuntu/data/train_data_example3/"
 
 
 # In[33]:
