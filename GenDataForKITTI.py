@@ -40,7 +40,7 @@ ROOT_DIR = os.path.abspath("../Mask_RCNN")
 WIDTH = 416
 HEIGHT = 128
 # calib_cam_to_cam.txt path
-INPUT_TXT_FILE="./train_data_example/20200219/calib_cam_to_cam.txt"
+INPUT_TXT_FILE="./calib_cam_to_cam.txt"
 # result seq length
 SEQ_LENGTH = 3
 # result step size
