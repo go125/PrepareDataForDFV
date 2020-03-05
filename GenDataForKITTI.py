@@ -33,7 +33,7 @@ from alignment import align
 
 
 #video_path
-base_path = "/home/ubuntu/data/raw_data/"
+base_path = "/home/ubuntu/data/raw_data_KITTI/"
 # Root directory of the RCNN project
 ROOT_DIR = os.path.abspath("../Mask_RCNN")
 # result WIDTH and HEIGHT

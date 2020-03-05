@@ -14163,3 +14163,106 @@ image                    shape: (128, 416, 3)         min:    1.00000  max:  255
 molded_images            shape: (1, 1024, 1024, 3)    min: -123.70000  max:  151.10000  float64
 image_metas              shape: (1, 93)               min:    0.00000  max: 1024.00000  float64
 anchors                  shape: (1, 261888, 4)        min:   -0.35390  max:    1.29134  float32
+Processing 1 images
+image                    shape: (128, 416, 3)         min:    2.00000  max:  255.00000  uint8
+molded_images            shape: (1, 1024, 1024, 3)    min: -123.70000  max:  151.10000  float64
+image_metas              shape: (1, 93)               min:    0.00000  max: 1024.00000  float64
+anchors                  shape: (1, 261888, 4)        min:   -0.35390  max:    1.29134  float32
+Processing 1 images
+image                    shape: (128, 416, 3)         min:    0.00000  max:  255.00000  uint8
+molded_images            shape: (1, 1024, 1024, 3)    min: -123.70000  max:  151.10000  float64
+image_metas              shape: (1, 93)               min:    0.00000  max: 1024.00000  float64
+anchors                  shape: (1, 261888, 4)        min:   -0.35390  max:    1.29134  float32
+Processing 1 images
+image                    shape: (128, 416, 3)         min:    1.00000  max:  255.00000  uint8
+molded_images            shape: (1, 1024, 1024, 3)    min: -123.70000  max:  151.10000  float64
+image_metas              shape: (1, 93)               min:    0.00000  max: 1024.00000  float64
+anchors                  shape: (1, 261888, 4)        min:   -0.35390  max:    1.29134  float32
+Processing 1 images
+image                    shape: (128, 416, 3)         min:    1.00000  max:  255.00000  uint8
+molded_images            shape: (1, 1024, 1024, 3)    min: -123.70000  max:  151.10000  float64
+image_metas              shape: (1, 93)               min:    0.00000  max: 1024.00000  float64
+anchors                  shape: (1, 261888, 4)        min:   -0.35390  max:    1.29134  float32
+Processing 1 images
+image                    shape: (128, 416, 3)         min:    1.00000  max:  255.00000  uint8
+molded_images            shape: (1, 1024, 1024, 3)    min: -123.70000  max:  151.10000  float64
+image_metas              shape: (1, 93)               min:    0.00000  max: 1024.00000  float64
+anchors                  shape: (1, 261888, 4)        min:   -0.35390  max:    1.29134  float32
+Processing 1 images
+image                    shape: (128, 416, 3)         min:    0.00000  max:  255.00000  uint8
+molded_images            shape: (1, 1024, 1024, 3)    min: -123.70000  max:  151.10000  float64
+image_metas              shape: (1, 93)               min:    0.00000  max: 1024.00000  float64
+anchors                  shape: (1, 261888, 4)        min:   -0.35390  max:    1.29134  float32
+Processing 1 images
+image                    shape: (128, 416, 3)         min:    1.00000  max:  255.00000  uint8
+molded_images            shape: (1, 1024, 1024, 3)    min: -123.70000  max:  151.10000  float64
+image_metas              shape: (1, 93)               min:    0.00000  max: 1024.00000  float64
+anchors                  shape: (1, 261888, 4)        min:   -0.35390  max:    1.29134  float32
+Processing 1 images
+image                    shape: (128, 416, 3)         min:    2.00000  max:  255.00000  uint8
+molded_images            shape: (1, 1024, 1024, 3)    min: -123.70000  max:  151.10000  float64
+image_metas              shape: (1, 93)               min:    0.00000  max: 1024.00000  float64
+anchors                  shape: (1, 261888, 4)        min:   -0.35390  max:    1.29134  float32
+Processing 1 images
+image                    shape: (128, 416, 3)         min:    1.00000  max:  255.00000  uint8
+molded_images            shape: (1, 1024, 1024, 3)    min: -123.70000  max:  151.10000  float64
+image_metas              shape: (1, 93)               min:    0.00000  max: 1024.00000  float64
+anchors                  shape: (1, 261888, 4)        min:   -0.35390  max:    1.29134  float32
+Processing 1 images
+image                    shape: (128, 416, 3)         min:    1.00000  max:  255.00000  uint8
+molded_images            shape: (1, 1024, 1024, 3)    min: -123.70000  max:  151.10000  float64
+image_metas              shape: (1, 93)               min:    0.00000  max: 1024.00000  float64
+anchors                  shape: (1, 261888, 4)        min:   -0.35390  max:    1.29134  float32
+Processing 1 images
+image                    shape: (128, 416, 3)         min:    2.00000  max:  255.00000  uint8
+molded_images            shape: (1, 1024, 1024, 3)    min: -123.70000  max:  151.10000  float64
+image_metas              shape: (1, 93)               min:    0.00000  max: 1024.00000  float64
+anchors                  shape: (1, 261888, 4)        min:   -0.35390  max:    1.29134  float32
+Processing 1 images
+image                    shape: (128, 416, 3)         min:    0.00000  max:  255.00000  uint8
+molded_images            shape: (1, 1024, 1024, 3)    min: -123.70000  max:  151.10000  float64
+image_metas              shape: (1, 93)               min:    0.00000  max: 1024.00000  float64
+anchors                  shape: (1, 261888, 4)        min:   -0.35390  max:    1.29134  float32
+Processing 1 images
+image                    shape: (128, 416, 3)         min:    0.00000  max:  255.00000  uint8
+molded_images            shape: (1, 1024, 1024, 3)    min: -123.70000  max:  151.10000  float64
+image_metas              shape: (1, 93)               min:    0.00000  max: 1024.00000  float64
+anchors                  shape: (1, 261888, 4)        min:   -0.35390  max:    1.29134  float32
+Processing 1 images
+image                    shape: (128, 416, 3)         min:    2.00000  max:  255.00000  uint8
+molded_images            shape: (1, 1024, 1024, 3)    min: -123.70000  max:  151.10000  float64
+image_metas              shape: (1, 93)               min:    0.00000  max: 1024.00000  float64
+anchors                  shape: (1, 261888, 4)        min:   -0.35390  max:    1.29134  float32
+Processing 1 images
+image                    shape: (128, 416, 3)         min:    1.00000  max:  255.00000  uint8
+molded_images            shape: (1, 1024, 1024, 3)    min: -123.70000  max:  151.10000  float64
+image_metas              shape: (1, 93)               min:    0.00000  max: 1024.00000  float64
+anchors                  shape: (1, 261888, 4)        min:   -0.35390  max:    1.29134  float32
+Processing 1 images
+image                    shape: (128, 416, 3)         min:    0.00000  max:  255.00000  uint8
+molded_images            shape: (1, 1024, 1024, 3)    min: -123.70000  max:  151.10000  float64
+image_metas              shape: (1, 93)               min:    0.00000  max: 1024.00000  float64
+anchors                  shape: (1, 261888, 4)        min:   -0.35390  max:    1.29134  float32
+Processing 1 images
+image                    shape: (128, 416, 3)         min:    0.00000  max:  255.00000  uint8
+molded_images            shape: (1, 1024, 1024, 3)    min: -123.70000  max:  151.10000  float64
+image_metas              shape: (1, 93)               min:    0.00000  max: 1024.00000  float64
+anchors                  shape: (1, 261888, 4)        min:   -0.35390  max:    1.29134  float32
+Processing 1 images
+image                    shape: (128, 416, 3)         min:    1.00000  max:  255.00000  uint8
+molded_images            shape: (1, 1024, 1024, 3)    min: -123.70000  max:  151.10000  float64
+image_metas              shape: (1, 93)               min:    0.00000  max: 1024.00000  float64
+anchors                  shape: (1, 261888, 4)        min:   -0.35390  max:    1.29134  float32
+Processing 1 images
+image                    shape: (128, 416, 3)         min:    1.00000  max:  255.00000  uint8
+molded_images            shape: (1, 1024, 1024, 3)    min: -123.70000  max:  151.10000  float64
+image_metas              shape: (1, 93)               min:    0.00000  max: 1024.00000  float64
+anchors                  shape: (1, 261888, 4)        min:   -0.35390  max:    1.29134  float32
+Processing 1 images
+image                    shape: (128, 416, 3)         min:    1.00000  max:  255.00000  uint8
+molded_images            shape: (1, 1024, 1024, 3)    min: -123.70000  max:  151.10000  float64
+image_metas              shape: (1, 93)               min:    0.00000  max: 1024.00000  float64
+anchors                  shape: (1, 261888, 4)        min:   -0.35390  max:    1.29134  float32
+Processing 1 images
+image                    shape: (128, 416, 3)         min:    0.00000  max:  255.00000  uint8
+molded_images            shape: (1, 1024, 1024, 3)    min: -123.70000  max:  151.10000  float64
