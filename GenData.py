@@ -33,7 +33,7 @@ from alignment import align
 
 
 #video_path
-base_path = "/home/ubuntu/data/raw_data_KITTI/"
+base_path = "/home/ubuntu/data/Users/maedahiroya/Library/Mobile_Documents/com_apple_CloudDocs/Lab/FY2019/04_MCR/20191019-20_tokushima/images_per_each_drive/"
 # Root directory of the RCNN project
 ROOT_DIR = os.path.abspath("../Mask_RCNN")
 # result WIDTH and HEIGHT
@@ -46,9 +46,9 @@ SEQ_LENGTH = 3
 # result step size
 STEPSIZE = 1
 #result output dir
-OUTPUT_DIR = '/home/ubuntu/data/kitti_result4'
+OUTPUT_DIR = '/home/ubuntu/data/tokushima_result20200312'
 #temp data dir
-TEMP_DIR="/home/ubuntu/data/train_data_example3/"
+TEMP_DIR="/home/ubuntu/data/train_data_example20200312/"
 
 
 # In[33]:
@@ -108,51 +108,38 @@ class_names = ['BG', 'person', 'bicycle', 'car', 'motorcycle', 'airplane',
 # In[34]:
 
 
-#data_dirs=[f.name for f in os.scandir(base_path) if not f.name.startswith('.')]
-#data_dirs=["data"]
-data_dirs=["2011_09_26_drive_0001",
-"2011_09_26_drive_0002",
-"2011_09_26_drive_0005",
-"2011_09_26_drive_0009",
-"2011_09_26_drive_0011",
-"2011_09_26_drive_0013",
-"2011_09_26_drive_0014",
-"2011_09_26_drive_0015",
-"2011_09_26_drive_0017",
-"2011_09_26_drive_0018",
-"2011_09_26_drive_0019",
-"2011_09_26_drive_0020",
-"2011_09_26_drive_0022",
-"2011_09_26_drive_0023",
-"2011_09_26_drive_0027",
-"2011_09_26_drive_0028",
-"2011_09_26_drive_0029",
-"2011_09_26_drive_0032",
-"2011_09_26_drive_0035",
-"2011_09_26_drive_0036",
-"2011_09_26_drive_0039"]
+
+data_dirs=[f.name for f in os.scandir(base_path) if not f.name.startswith('.')]
+
+
 #warning:0046 causes error!
 
 
 def make_dataset():
+    #This function should be modified if you don't use KITTI dataset!
     global number_list,TEMP_DIR
     number_list=[]
     for dataset in data_dirs:
-        data_year=dataset.split("_")[0]
-        data_month=dataset.split("_")[1]
-        data_date=dataset.split("_")[2]
-        IMAGE_DIR=base_path+data_year+"_"+data_month+"_"+data_date+"/"+ dataset +"_sync/image_02/data/"
+        data_year="2020"
+        data_month="03"
+        data_date="12"
+        #Please designate these three variables if you don't use KITTI dataset
+        IMAGE_DIR=base_path + dataset+ "/"
+        #Please change IMAGE_DIR path if you don't use KITTI dataset
         
         file_names=[f.name for f in os.scandir(IMAGE_DIR) if not f.name.startswith('.')]
         OUTPUT_DIR1= TEMP_DIR+data_year+"_"+data_month+"_"+data_date+"/"+dataset+'/image_02/data'
+        #Please change OUTPUT_DIR1 path if you don't use KITTI dataset
         if not os.path.exists(OUTPUT_DIR1+"/"):
             os.makedirs(OUTPUT_DIR1+"/")
         make_dataset1(OUTPUT_DIR1,file_names,dataset,IMAGE_DIR)
         OUTPUT_DIR2= TEMP_DIR+data_year+"_"+data_month+"_"+data_date+"/"+dataset+'/image_03/data'
+        #Please change OUTPUT_DIR2 path if you don't use KITTI dataset
         if not os.path.exists(OUTPUT_DIR2+"/"):
             os.makedirs(OUTPUT_DIR2+"/")
         make_mask_images(OUTPUT_DIR2,file_names,dataset,IMAGE_DIR)
         OUTPUT_TXT_FILE=TEMP_DIR+data_year+"_"+data_month+"_"+data_date+"/calib_cam_to_cam.txt"
+        #Please change OUTPUT_TXT_FILE path if you don't use KITTI dataset
         shutil.copyfile(INPUT_TXT_FILE, OUTPUT_TXT_FILE)
     
     
@@ -165,6 +152,7 @@ def make_dataset():
         
         
         
+        
 
 # In[35]:
 
@@ -172,9 +160,9 @@ def make_dataset():
 def make_dataset1(OUTPUT_DIR1,file_names,dataset,IMAGE_DIR):
     for i in range(0,len(file_names)):        
         image_file=IMAGE_DIR + file_names[i]
-        #ここをいじろう
         img = cv2.imread(image_file)
-        img=cv2.resize(img,(WIDTH,HEIGHT))
+        img=cv2.resize(img,(416,416))
+        img = img[96 : 224, 0 : 416]       
         if not os.path.exists(OUTPUT_DIR1):
             os.makedirs(OUTPUT_DIR1)
         cv2.imwrite(OUTPUT_DIR1 + '/' + file_names[i] + '.jpg', img)
@@ -186,8 +174,8 @@ def make_dataset1(OUTPUT_DIR1,file_names,dataset,IMAGE_DIR):
 def make_mask_images(OUTPUT_DIR2,file_names,dataset,IMAGE_DIR):
     for i in range(0,len(file_names)):   
         image = skimage.io.imread(os.path.join(IMAGE_DIR, file_names[i]))
-        image=cv2.resize(image,(WIDTH,HEIGHT))
-        
+        image=cv2.resize(image,(416,416))
+        image = image[96 : 224, 0 : 416]              
         # Run detection
         results = model.detect([image], verbose=1)
         r = results[0]
