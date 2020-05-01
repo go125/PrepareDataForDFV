@@ -33,22 +33,22 @@ from alignment import align
 
 
 #video_path
-base_path = "/home/ubuntu/data/raw_data/"
+base_path = "/home/ubuntu/data/raw_data_KITTI/"
 # Root directory of the RCNN project
 ROOT_DIR = os.path.abspath("../Mask_RCNN")
 # result WIDTH and HEIGHT
 WIDTH = 416
 HEIGHT = 128
 # calib_cam_to_cam.txt path
-INPUT_TXT_FILE="./train_data_example/20200219/calib_cam_to_cam.txt"
+INPUT_TXT_FILE="./calib_cam_to_cam.txt"
 # result seq length
 SEQ_LENGTH = 3
 # result step size
 STEPSIZE = 1
 #result output dir
-OUTPUT_DIR = '/home/ubuntu/data/kitti_result_all'
+OUTPUT_DIR = "/home/ubuntu/data/kitti_result_all_20200501"
 #temp data dir
-TEMP_DIR="/home/ubuntu/data/train_data_example_all/"
+TEMP_DIR="/home/ubuntu/data/train_data_example_all_20200501/"
 
 
 # In[33]:
