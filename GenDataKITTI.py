@@ -33,14 +33,14 @@ from alignment import align
 
 
 #video_path
-base_path = "/home/ubuntu/data/raw_data_KITTI/"
+base_path = "/home/ubuntu/data/raw_data/"
 # Root directory of the RCNN project
 ROOT_DIR = os.path.abspath("../Mask_RCNN")
 # result WIDTH and HEIGHT
 WIDTH = 416
 HEIGHT = 128
 # calib_cam_to_cam.txt path
-INPUT_TXT_FILE="./calib_cam_to_cam.txt"
+INPUT_TXT_FILE="./train_data_example/20200219/calib_cam_to_cam.txt"
 # result seq length
 SEQ_LENGTH = 3
 # result step size
@@ -108,8 +108,35 @@ class_names = ['BG', 'person', 'bicycle', 'car', 'motorcycle', 'airplane',
 # In[34]:
 
 
-#data_dirs=[f.name for f in os.scandir(base_path) if not f.name.startswith('.')]
-#data_dirs=["data"]
+test_dirs=["2011_09_26_drive_0117",
+"2011_09_28_drive_0002",
+"2011_09_26_drive_0052",
+"2011_09_30_drive_0016",
+"2011_09_26_drive_0059",
+"2011_09_26_drive_0027",
+"2011_09_26_drive_0020",
+"2011_09_26_drive_0009",
+"2011_09_26_drive_0013",
+"2011_09_26_drive_0101",
+"2011_09_26_drive_0046",
+"2011_09_26_drive_0029",
+"2011_09_26_drive_0064",
+"2011_09_26_drive_0048",
+"2011_10_03_drive_0027",
+"2011_09_26_drive_0002",
+"2011_09_26_drive_0036",
+"2011_09_29_drive_0071",
+"2011_10_03_drive_0047",
+"2011_09_30_drive_0027",
+"2011_09_26_drive_0086",
+"2011_09_26_drive_0084",
+"2011_09_26_drive_0096",
+"2011_09_30_drive_0018",
+"2011_09_26_drive_0106",
+"2011_09_26_drive_0056",
+"2011_09_26_drive_0023",
+"2011_09_26_drive_0093"]
+
 data_dirs=["2011_09_26_drive_0001",
 "2011_09_26_drive_0002",
 "2011_09_26_drive_0005",
@@ -272,6 +299,8 @@ def make_dataset():
     global number_list,TEMP_DIR
     number_list=[]
     for dataset in data_dirs:
+    	if dataset in test_dirs:
+    		continue
         data_year=dataset.split("_")[0]
         data_month=dataset.split("_")[1]
         data_date=dataset.split("_")[2]
@@ -306,7 +335,6 @@ def make_dataset():
 def make_dataset1(OUTPUT_DIR1,file_names,dataset,IMAGE_DIR):
     for i in range(0,len(file_names)):        
         image_file=IMAGE_DIR + file_names[i]
-        #ここをいじろう
         img = cv2.imread(image_file)
         img=cv2.resize(img,(WIDTH,HEIGHT))
         if not os.path.exists(OUTPUT_DIR1):
