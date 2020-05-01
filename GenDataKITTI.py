@@ -299,8 +299,8 @@ def make_dataset():
     global number_list,TEMP_DIR
     number_list=[]
     for dataset in data_dirs:
-    	if dataset in test_dirs:
-    		continue
+        if dataset in test_dirs:
+            continue
         data_year=dataset.split("_")[0]
         data_month=dataset.split("_")[1]
         data_date=dataset.split("_")[2]
