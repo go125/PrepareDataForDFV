@@ -350,7 +350,7 @@ def make_mask_images_nomask(OUTPUT_DIR2,file_names,dataset,IMAGE_DIR):
         #image = skimage.io.imread(os.path.join(IMAGE_DIR, file_names[i]))
     	image_file=IMAGE_DIR + file_names[i]
         image = cv2.imread(image_file)
-        image=cv2.resize(image,(WIDTH,HEIGHT))
+        image = cv2.resize(image,(WIDTH,HEIGHT))
         
         # Run detection
         #results = model.detect([image], verbose=1)
