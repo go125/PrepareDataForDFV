@@ -372,6 +372,7 @@ def make_mask_images_nomask(OUTPUT_DIR2,file_names,dataset,IMAGE_DIR):
         if not os.path.exists(OUTPUT_DIR2):
             os.makedirs(OUTPUT_DIR2)
         cv2.imwrite(OUTPUT_DIR2 + '/' + file_names[i] + '.jpg',mask_img)
+        print(i)
 
 
 # In[37]:
