@@ -399,7 +399,7 @@ def make_mask_images(OUTPUT_DIR2,file_names,dataset,IMAGE_DIR,data_num):
         
             if not os.path.exists(OUTPUT_DIR2):
                 os.makedirs(OUTPUT_DIR2)
-        cv2.imwrite(OUTPUT_DIR2 + '/' + data_num + "_" file_names[i] + '.jpg',mask_img)
+        cv2.imwrite(OUTPUT_DIR2 + '/' + data_num + "_" + file_names[i] + '.jpg',mask_img)
 
 
 # In[37]:
