@@ -46,9 +46,9 @@ SEQ_LENGTH = 3
 # result step size
 STEPSIZE = 1
 #result output dir
-OUTPUT_DIR = "/home/ubuntu/data/kitti_result_all_20200501"
+OUTPUT_DIR = "/home/ubuntu/data/kitti_result_all_20200508"
 #temp data dir
-TEMP_DIR="/home/ubuntu/data/train_data_example_all_20200501/"
+TEMP_DIR="/home/ubuntu/data/train_data_example_all_20200508/"
 
 
 # In[33]:
@@ -304,17 +304,47 @@ def make_dataset():
         data_year=dataset.split("_")[0]
         data_month=dataset.split("_")[1]
         data_date=dataset.split("_")[2]
-        IMAGE_DIR=base_path+data_year+"_"+data_month+"_"+data_date+"/"+ dataset +"_sync/image_02/data/"
+        
+        data_num="02"
+        IMAGE_DIR=base_path+data_year+"_"+data_month+"_"+data_date+"/"+ dataset +"_sync/image_"+data_num+"/data/"
         
         file_names=[f.name for f in os.scandir(IMAGE_DIR) if not f.name.startswith('.')]
+        
         OUTPUT_DIR1= TEMP_DIR+data_year+"_"+data_month+"_"+data_date+"/"+dataset+'/image_02/data'
+        
         if not os.path.exists(OUTPUT_DIR1+"/"):
             os.makedirs(OUTPUT_DIR1+"/")
-        make_dataset1(OUTPUT_DIR1,file_names,dataset,IMAGE_DIR)
+            
+        make_dataset1(OUTPUT_DIR1,file_names,dataset,IMAGE_DIR,data_num)
+        
         OUTPUT_DIR2= TEMP_DIR+data_year+"_"+data_month+"_"+data_date+"/"+dataset+'/image_03/data'
+        
         if not os.path.exists(OUTPUT_DIR2+"/"):
             os.makedirs(OUTPUT_DIR2+"/")
-        make_mask_images(OUTPUT_DIR2,file_names,dataset,IMAGE_DIR)
+            
+        make_mask_images(OUTPUT_DIR2,file_names,dataset,IMAGE_DIR,data_num)
+        
+        
+        data_num="03"
+        IMAGE_DIR=base_path+data_year+"_"+data_month+"_"+data_date+"/"+ dataset +"_sync/image_"+data_num+"/data/"
+        
+        file_names=[f.name for f in os.scandir(IMAGE_DIR) if not f.name.startswith('.')]
+        
+        OUTPUT_DIR1= TEMP_DIR+data_year+"_"+data_month+"_"+data_date+"/"+dataset+'/image_02/data'
+        
+        if not os.path.exists(OUTPUT_DIR1+"/"):
+            os.makedirs(OUTPUT_DIR1+"/")
+            
+        make_dataset1(OUTPUT_DIR1,file_names,dataset,IMAGE_DIR,data_num)
+        
+        OUTPUT_DIR2= TEMP_DIR+data_year+"_"+data_month+"_"+data_date+"/"+dataset+'/image_03/data'
+        
+        if not os.path.exists(OUTPUT_DIR2+"/"):
+            os.makedirs(OUTPUT_DIR2+"/")
+            
+        make_mask_images(OUTPUT_DIR2,file_names,dataset,IMAGE_DIR,data_num)
+        
+        
         OUTPUT_TXT_FILE=TEMP_DIR+data_year+"_"+data_month+"_"+data_date+"/calib_cam_to_cam.txt"
         shutil.copyfile(INPUT_TXT_FILE, OUTPUT_TXT_FILE)
     
@@ -332,20 +362,20 @@ def make_dataset():
 # In[35]:
 
 
-def make_dataset1(OUTPUT_DIR1,file_names,dataset,IMAGE_DIR):
+def make_dataset1(OUTPUT_DIR1,file_names,dataset,IMAGE_DIR,data_num):
     for i in range(0,len(file_names)):        
         image_file=IMAGE_DIR + file_names[i]
         img = cv2.imread(image_file)
         img=cv2.resize(img,(WIDTH,HEIGHT))
         if not os.path.exists(OUTPUT_DIR1):
             os.makedirs(OUTPUT_DIR1)
-        cv2.imwrite(OUTPUT_DIR1 + '/' + file_names[i] + '.jpg', img)
+        cv2.imwrite(OUTPUT_DIR1 + '/' + data_num + "_" + file_names[i] + '.jpg', img)
 
 
 # In[36]:
 
 
-def make_mask_images(OUTPUT_DIR2,file_names,dataset,IMAGE_DIR):
+def make_mask_images(OUTPUT_DIR2,file_names,dataset,IMAGE_DIR,data_num):
     for i in range(0,len(file_names)):   
         image = skimage.io.imread(os.path.join(IMAGE_DIR, file_names[i]))
         image=cv2.resize(image,(WIDTH,HEIGHT))
@@ -369,7 +399,7 @@ def make_mask_images(OUTPUT_DIR2,file_names,dataset,IMAGE_DIR):
         
             if not os.path.exists(OUTPUT_DIR2):
                 os.makedirs(OUTPUT_DIR2)
-        cv2.imwrite(OUTPUT_DIR2 + '/' + file_names[i] + '.jpg',mask_img)
+        cv2.imwrite(OUTPUT_DIR2 + '/' + data_num + "_" file_names[i] + '.jpg',mask_img)
 
 
 # In[37]:
