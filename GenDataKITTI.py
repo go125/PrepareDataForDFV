@@ -295,6 +295,8 @@ data_dirs=["2011_09_26_drive_0001",
 "2011_10_03_drive_0058"]
 
 
+data_dirs=["2011_09_26_drive_0001"]
+
 def make_dataset():
     global number_list,TEMP_DIR
     number_list=[]
