@@ -310,14 +310,14 @@ def make_dataset():
         
         file_names=[f.name for f in os.scandir(IMAGE_DIR) if not f.name.startswith('.')]
         
-        OUTPUT_DIR1= TEMP_DIR+data_year+"_"+data_month+"_"+data_date+"/"+dataset+'/image_02/data'
+        OUTPUT_DIR1= TEMP_DIR+data_year+"_"+data_month+"_"+data_date+"/"+dataset+"_"+data_num+'/image_02/data'
         
         if not os.path.exists(OUTPUT_DIR1+"/"):
             os.makedirs(OUTPUT_DIR1+"/")
             
         make_dataset1(OUTPUT_DIR1,file_names,dataset,IMAGE_DIR,data_num)
         
-        OUTPUT_DIR2= TEMP_DIR+data_year+"_"+data_month+"_"+data_date+"/"+dataset+'/image_03/data'
+        OUTPUT_DIR2= TEMP_DIR+data_year+"_"+data_month+"_"+data_date+"/"+dataset+"_"+data_num+'/image_03/data'
         
         if not os.path.exists(OUTPUT_DIR2+"/"):
             os.makedirs(OUTPUT_DIR2+"/")
@@ -330,14 +330,14 @@ def make_dataset():
         
         file_names=[f.name for f in os.scandir(IMAGE_DIR) if not f.name.startswith('.')]
         
-        OUTPUT_DIR1= TEMP_DIR+data_year+"_"+data_month+"_"+data_date+"/"+dataset+'/image_02/data'
+        OUTPUT_DIR1= TEMP_DIR+data_year+"_"+data_month+"_"+data_date+"/"+dataset+"_"+data_num+'/image_02/data'
         
         if not os.path.exists(OUTPUT_DIR1+"/"):
             os.makedirs(OUTPUT_DIR1+"/")
             
         make_dataset1(OUTPUT_DIR1,file_names,dataset,IMAGE_DIR,data_num)
         
-        OUTPUT_DIR2= TEMP_DIR+data_year+"_"+data_month+"_"+data_date+"/"+dataset+'/image_03/data'
+        OUTPUT_DIR2= TEMP_DIR+data_year+"_"+data_month+"_"+data_date+"/"+dataset+"_"+data_num+'/image_03/data'
         
         if not os.path.exists(OUTPUT_DIR2+"/"):
             os.makedirs(OUTPUT_DIR2+"/")
