@@ -172,12 +172,12 @@ def make_dataset1(OUTPUT_DIR1,file_names,dataset,IMAGE_DIR):
         
         
         if (height/width)>(128/416):
-            print("yes")
+            #print("yes")
             small_height=int(height*(416/width))
-            print(small_height)
+            #print(small_height)
             img=cv2.resize(img,(416,small_height))
             img = img[(small_height//2-64):(small_height//2+64), 0 : 416] 
-            print(img.shape[:2])
+            #print(img.shape[:2])
         else:
             small_width=int(width*(128/height))
             img=cv2.resize(img,(small_width,128))
@@ -201,12 +201,12 @@ def make_mask_images(OUTPUT_DIR2,file_names,dataset,IMAGE_DIR):
         height, width = image.shape[:2]
             
         if (height/width)>(128/416):
-            print("yes2")
+            #print("yes2")
             small_height=int(height*(416/width))
-            print(small_height)
+            #print(small_height)
             image=cv2.resize(image,(416,small_height))
             image = image[(small_height//2-64):(small_height//2+64), 0 : 416] 
-            print(image.shape[:2])
+            #print(image.shape[:2])
         else:
             small_width=int(width*(128/height))
             image=cv2.resize(image,(small_width,128))
