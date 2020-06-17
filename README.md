@@ -11,7 +11,7 @@ nohup python GenDataKITTI.py &
 
 ## Input example (Youtube videos)
 
-First, please execute beggining part of ReadMovie.ipynb.
+First, please execute the initial part of ReadMovie.ipynb.
 
 Then, please execute below.
 
