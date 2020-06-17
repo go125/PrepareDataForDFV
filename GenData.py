@@ -1,6 +1,9 @@
 #!/usr/bin/env python
 # coding: utf-8
 
+
+
+
 # In[31]:
 
 
@@ -33,7 +36,7 @@ from alignment import align
 
 
 #video_path
-base_path = "/home/ubuntu/data/Users/maedahiroya/Library/Mobile_Documents/com_apple_CloudDocs/Lab/FY2019/04_MCR/20191019-20_tokushima/images_per_each_drive/"
+base_path = "/home/ubuntu/data/all_video/"
 # Root directory of the RCNN project
 ROOT_DIR = os.path.abspath("../Mask_RCNN")
 # result WIDTH and HEIGHT
@@ -118,11 +121,13 @@ data_dirs=[f.name for f in os.scandir(base_path) if not f.name.startswith('.')]
 def make_dataset():
     #This function should be modified if you don't use KITTI dataset!
     global number_list,TEMP_DIR
+    if not TEMP_DIR.endswith('/'):
+        TEMP_DIR = TEMP_DIR + '/'
     number_list=[]
     for dataset in data_dirs:
         data_year="2020"
-        data_month="03"
-        data_date="12"
+        data_month="06"
+        data_date="27"
         #Please designate these three variables if you don't use KITTI dataset
         IMAGE_DIR=base_path + dataset+ "/"
         #Please change IMAGE_DIR path if you don't use KITTI dataset
@@ -161,8 +166,25 @@ def make_dataset1(OUTPUT_DIR1,file_names,dataset,IMAGE_DIR):
     for i in range(0,len(file_names)):        
         image_file=IMAGE_DIR + file_names[i]
         img = cv2.imread(image_file)
-        img=cv2.resize(img,(416,416))
-        img = img[96 : 224, 0 : 416]       
+        
+        
+        height, width = img.shape[:2]
+        
+        
+        if (height/width)>(128/416):
+            print("yes")
+            small_height=int(height*(416/width))
+            print(small_height)
+            img=cv2.resize(img,(416,small_height))
+            img = img[(small_height//2-64):(small_height//2+64), 0 : 416] 
+            print(img.shape[:2])
+        else:
+            small_width=int(width*(128/height))
+            img=cv2.resize(img,(small_width,128))
+            img = img[0:128,(small_width//2-208):(small_width//2+208)] 
+            
+            
+            
         if not os.path.exists(OUTPUT_DIR1):
             os.makedirs(OUTPUT_DIR1)
         cv2.imwrite(OUTPUT_DIR1 + '/' + file_names[i] + '.jpg', img)
@@ -174,8 +196,24 @@ def make_dataset1(OUTPUT_DIR1,file_names,dataset,IMAGE_DIR):
 def make_mask_images(OUTPUT_DIR2,file_names,dataset,IMAGE_DIR):
     for i in range(0,len(file_names)):   
         image = skimage.io.imread(os.path.join(IMAGE_DIR, file_names[i]))
-        image=cv2.resize(image,(416,416))
-        image = image[96 : 224, 0 : 416]              
+        
+        
+        height, width = image.shape[:2]
+            
+        if (height/width)>(128/416):
+            print("yes2")
+            small_height=int(height*(416/width))
+            print(small_height)
+            image=cv2.resize(image,(416,small_height))
+            image = image[(small_height//2-64):(small_height//2+64), 0 : 416] 
+            print(image.shape[:2])
+        else:
+            small_width=int(width*(128/height))
+            image=cv2.resize(image,(small_width,128))
+            image = image[0:128,(small_width//2-208):(small_width//2+208)] 
+            
+            
+            
         # Run detection
         results = model.detect([image], verbose=1)
         r = results[0]
