@@ -227,11 +227,11 @@ def make_mask_images(OUTPUT_DIR2,file_names,dataset,IMAGE_DIR,WIDTH,HEIGHT):
         
         if (init_height/init_width)>(WIDTH/HEIGHT):
             small_height=int(init_height*(WIDTH/init_width))
-            image=cv2.resize(img,(WIDTH,small_height))
+            image=cv2.resize(image,(WIDTH,small_height))
             image = image[(small_height//2-HEIGHT//2):(small_height//2+HEIGHT//2), 0 : WIDTH] 
         else:
             small_width=int(init_width*(HEIGHT/init_height))
-            image=cv2.resize(img,(small_width,HEIGHT))
+            image=cv2.resize(image,(small_width,HEIGHT))
             image = image[0:HEIGHT,(small_width//2-WIDTH//2):(small_width//2+WIDTH//2)] 
             
             
