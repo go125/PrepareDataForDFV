@@ -35,23 +35,54 @@ from alignment import align
 # In[32]:
 
 
+parser = argparse.ArgumentParser()
+parser.add_argument("base_path", help="video_path", type=str)
+parser.add_argument("ROOT_DIR", help="Root directory of the RCNN project", type=str)
+parser.add_argument("WIDTH", help="width of the output training image", type=int)
+parser.add_argument("HEIGHT", help="height of the output training image", type=int)
+parser.add_argument("INPUT_TXT_FILE", help="calib_cam_to_cam.txt path", type=str)
+parser.add_argument("SEQ_LENGTH", help="result seq length", type=int)
+parser.add_argument("STEPSIZE", help="result step size", type=int)
+parser.add_argument("OUTPUT_DIR", help="result output dir", type=str)
+parser.add_argument("TEMP_DIR", help="temp data dir", type=str)
+
+args = parser.parse_args()
+
+
 #video_path
-base_path = "/home/ubuntu/data/all_video/"
+base_path = args.base_path
+#base_path = "/home/ubuntu/data/all_video/"
+
 # Root directory of the RCNN project
-ROOT_DIR = os.path.abspath("../Mask_RCNN")
+ROOT_DIR = args.ROOT_DIR
+#ROOT_DIR = os.path.abspath("../Mask_RCNN")
+
 # result WIDTH and HEIGHT
-WIDTH = 416
-HEIGHT = 128
+WIDTH = args.WIDTH
+HEIGHT = args.HEIGHT
+#WIDTH = 416
+#HEIGHT = 128
+
 # calib_cam_to_cam.txt path
-INPUT_TXT_FILE="./calib_cam_to_cam.txt"
+INPUT_TXT_FILE=args.INPUT_TXT_FILE
+#INPUT_TXT_FILE="./calib_cam_to_cam.txt"
+
 # result seq length
-SEQ_LENGTH = 3
+SEQ_LENGTH = args.SEQ_LENGTH
+#SEQ_LENGTH = 3
+
 # result step size
-STEPSIZE = 1
+STEPSIZE = args.STEPSIZE
+#STEPSIZE = 1
+
 #result output dir
-OUTPUT_DIR = '/home/ubuntu/data/tokushima_result20200312'
+OUTPUT_DIR = args.OUTPUT_DIR
+#OUTPUT_DIR = '/home/ubuntu/data/tokushima_result20200312'
+
 #temp data dir
-TEMP_DIR="/home/ubuntu/data/train_data_example20200312/"
+TEMP_DIR= args.TEMP_DIR
+#TEMP_DIR="/home/ubuntu/data/train_data_example20200312/"
+
 
 
 # In[33]:
@@ -120,7 +151,7 @@ data_dirs=[f.name for f in os.scandir(base_path) if not f.name.startswith('.')]
 
 def make_dataset():
     #This function should be modified if you don't use KITTI dataset!
-    global number_list,TEMP_DIR
+    global number_list,TEMP_DIR,WIDTH,HEIGHT
     if not TEMP_DIR.endswith('/'):
         TEMP_DIR = TEMP_DIR + '/'
     number_list=[]
@@ -129,22 +160,18 @@ def make_dataset():
         data_month="06"
         data_date="27"
         #Please designate these three variables if you don't use KITTI dataset
+        #The value is not important
         IMAGE_DIR=base_path + dataset+ "/"
-        #Please change IMAGE_DIR path if you don't use KITTI dataset
-        
         file_names=[f.name for f in os.scandir(IMAGE_DIR) if not f.name.startswith('.')]
         OUTPUT_DIR1= TEMP_DIR+data_year+"_"+data_month+"_"+data_date+"/"+dataset+'/image_02/data'
-        #Please change OUTPUT_DIR1 path if you don't use KITTI dataset
         if not os.path.exists(OUTPUT_DIR1+"/"):
             os.makedirs(OUTPUT_DIR1+"/")
-        make_dataset1(OUTPUT_DIR1,file_names,dataset,IMAGE_DIR)
+        make_dataset1(OUTPUT_DIR1,file_names,dataset,IMAGE_DIR,WIDTH,HEIGHT)
         OUTPUT_DIR2= TEMP_DIR+data_year+"_"+data_month+"_"+data_date+"/"+dataset+'/image_03/data'
-        #Please change OUTPUT_DIR2 path if you don't use KITTI dataset
         if not os.path.exists(OUTPUT_DIR2+"/"):
             os.makedirs(OUTPUT_DIR2+"/")
-        make_mask_images(OUTPUT_DIR2,file_names,dataset,IMAGE_DIR)
+        make_mask_images(OUTPUT_DIR2,file_names,dataset,IMAGE_DIR,WIDTH,HEIGHT)
         OUTPUT_TXT_FILE=TEMP_DIR+data_year+"_"+data_month+"_"+data_date+"/calib_cam_to_cam.txt"
-        #Please change OUTPUT_TXT_FILE path if you don't use KITTI dataset
         shutil.copyfile(INPUT_TXT_FILE, OUTPUT_TXT_FILE)
     
     
@@ -162,26 +189,23 @@ def make_dataset():
 # In[35]:
 
 
-def make_dataset1(OUTPUT_DIR1,file_names,dataset,IMAGE_DIR):
+def make_dataset1(OUTPUT_DIR1,file_names,dataset,IMAGE_DIR,WIDTH,HEIGHT):
     for i in range(0,len(file_names)):        
         image_file=IMAGE_DIR + file_names[i]
         img = cv2.imread(image_file)
         
         
-        height, width = img.shape[:2]
+        init_height, init_width = img.shape[:2]
         
         
-        if (height/width)>(128/416):
-            #print("yes")
-            small_height=int(height*(416/width))
-            #print(small_height)
-            img=cv2.resize(img,(416,small_height))
-            img = img[(small_height//2-64):(small_height//2+64), 0 : 416] 
-            #print(img.shape[:2])
+        if (init_height/init_width)>(WIDTH/HEIGHT):
+            small_height=int(init_height*(WIDTH/init_width))
+            img=cv2.resize(img,(WIDTH,small_height))
+            img = img[(small_height//2-HEIGHT//2):(small_height//2+HEIGHT//2), 0 : WIDTH] 
         else:
-            small_width=int(width*(128/height))
-            img=cv2.resize(img,(small_width,128))
-            img = img[0:128,(small_width//2-208):(small_width//2+208)] 
+            small_width=int(init_width*(HEIGHT/init_height))
+            img=cv2.resize(img,(small_width,HEIGHT))
+            img = img[0:HEIGHT,(small_width//2-WIDTH//2):(small_width//2+WIDTH//2)] 
             
             
             
@@ -193,24 +217,22 @@ def make_dataset1(OUTPUT_DIR1,file_names,dataset,IMAGE_DIR):
 # In[36]:
 
 
-def make_mask_images(OUTPUT_DIR2,file_names,dataset,IMAGE_DIR):
+def make_mask_images(OUTPUT_DIR2,file_names,dataset,IMAGE_DIR,WIDTH,HEIGHT):
     for i in range(0,len(file_names)):   
         image = skimage.io.imread(os.path.join(IMAGE_DIR, file_names[i]))
         
         
-        height, width = image.shape[:2]
-            
-        if (height/width)>(128/416):
-            #print("yes2")
-            small_height=int(height*(416/width))
-            #print(small_height)
-            image=cv2.resize(image,(416,small_height))
-            image = image[(small_height//2-64):(small_height//2+64), 0 : 416] 
-            #print(image.shape[:2])
+        init_height, init_width = img.shape[:2]
+        
+        
+        if (init_height/init_width)>(WIDTH/HEIGHT):
+            small_height=int(init_height*(WIDTH/init_width))
+            img=cv2.resize(img,(WIDTH,small_height))
+            img = img[(small_height//2-HEIGHT//2):(small_height//2+HEIGHT//2), 0 : WIDTH] 
         else:
-            small_width=int(width*(128/height))
-            image=cv2.resize(image,(small_width,128))
-            image = image[0:128,(small_width//2-208):(small_width//2+208)] 
+            small_width=int(init_width*(HEIGHT/init_height))
+            img=cv2.resize(img,(small_width,HEIGHT))
+            img = img[0:HEIGHT,(small_width//2-WIDTH//2):(small_width//2+WIDTH//2)] 
             
             
             
