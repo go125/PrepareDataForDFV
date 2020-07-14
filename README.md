@@ -24,6 +24,8 @@ nohup python GenData.py --base_path /home/ubuntu/data/all_video/ \
 --TEMP_DIR /home/ubuntu/data/train_data_example20200312/ &
 ```
 
+
+
 ## Input example (My City Report)
 
 ```script
@@ -33,4 +35,26 @@ nohup python GenData.py --base_path ../videos/ \
 --HEIGHT 216 \
 --OUTPUT_DIR ../out \
 --TEMP_DIR ../tmpdir &
+```
+
+
+### Data structure example
+
+```
+..
+├── Mask_RCNN
+├── PrepareDataForDFV
+│   ├── GenData.py
+│   ├── calib_cam_to_cam.txt
+│   └── etc
+└── videos
+    ├── video1
+    │   ├── frame1.jpg
+    │   ├── frame2.jpg
+    │   └── frame3.jpg
+    ├── video2
+    │   ├── frame1.jpg
+    │   ├── frame2.jpg
+    │   └── frame3.jpg
+    └── etc
 ```
