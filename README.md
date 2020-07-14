@@ -27,10 +27,10 @@ nohup python GenData.py --base_path /home/ubuntu/data/all_video/ \
 ## Input example (My City Report)
 
 ```script
-nohup python GenData.py --base_path /home/ubuntu/data/all_video/ \
+nohup python GenData.py --base_path ../img \
 --ROOT_DIR ../Mask_RCNN \
 --WIDTH 216
 --HEIGHT 216
---OUTPUT_DIR /home/ubuntu/data/tokushima_result20200312 \
---TEMP_DIR /home/ubuntu/data/train_data_example20200312/ &
+--OUTPUT_DIR ../out \
+--TEMP_DIR ../tmpdir &
 ```
