@@ -211,7 +211,7 @@ def make_dataset1(OUTPUT_DIR1,file_names,dataset,IMAGE_DIR,WIDTH,HEIGHT):
             
         if not os.path.exists(OUTPUT_DIR1):
             os.makedirs(OUTPUT_DIR1)
-        cv2.imwrite(OUTPUT_DIR1 + '/' + file_names[i] + '.jpg', img)
+        cv2.imwrite(OUTPUT_DIR1 + '/' + file_names[i] , img)
 
 
 # In[36]:
@@ -255,7 +255,7 @@ def make_mask_images(OUTPUT_DIR2,file_names,dataset,IMAGE_DIR,WIDTH,HEIGHT):
         
             if not os.path.exists(OUTPUT_DIR2):
                 os.makedirs(OUTPUT_DIR2)
-        cv2.imwrite(OUTPUT_DIR2 + '/' + file_names[i] + '.jpg',mask_img)
+        cv2.imwrite(OUTPUT_DIR2 + '/' + file_names[i] ,mask_img)
 
 
 # In[37]:
