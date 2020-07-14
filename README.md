@@ -18,5 +18,19 @@ First, please execute the initial part of ReadMovie.ipynb.
 Then, please execute below.
 
 ```script
-nohup python GenData.py &
+nohup python GenData.py --base_path /home/ubuntu/data/all_video/ \
+--ROOT_DIR ../Mask_RCNN \
+--OUTPUT_DIR /home/ubuntu/data/tokushima_result20200312 \
+--TEMP_DIR /home/ubuntu/data/train_data_example20200312/ &
+```
+
+## Input example (My City Report)
+
+```script
+nohup python GenData.py --base_path ../img \
+--ROOT_DIR ../Mask_RCNN \
+--WIDTH 216 \
+--HEIGHT 216 \
+--OUTPUT_DIR ../out \
+--TEMP_DIR ../tmpdir &
 ```
