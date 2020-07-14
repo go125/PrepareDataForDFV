@@ -31,8 +31,8 @@ nohup python GenData.py --base_path /home/ubuntu/data/all_video/ \
 ```script
 nohup python GenData.py --base_path ../videos/ \
 --ROOT_DIR ../Mask_RCNN \
---WIDTH 216 \
---HEIGHT 216 \
+--WIDTH 16 \
+--HEIGHT 16 \
 --OUTPUT_DIR ../out \
 --TEMP_DIR ../tmpdir &
 ```
