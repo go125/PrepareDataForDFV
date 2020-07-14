@@ -30,7 +30,7 @@ import glob
 import alignment
 from alignment import compute_overlap
 from alignment import align
-
+import argparse
 
 # In[32]:
 
