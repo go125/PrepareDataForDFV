@@ -10,6 +10,13 @@ nohup python GenDataKITTI.py &
 ```
 
  If you want to delete static frames designated in SfM Learner, please execute RemoveStaticFrames.ipynb after executing GenDataKITTI.py.
+ 
+ 
+## Input example (KITTI_gray)
+
+```script
+nohup python GenDataKITTI_gray.py &
+```
 
 ## Input example (Youtube videos)
 
