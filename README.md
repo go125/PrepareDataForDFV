@@ -27,7 +27,7 @@ nohup python GenData.py --base_path /home/ubuntu/data/all_video/ \
 ## Input example (My City Report)
 
 ```script
-nohup python GenData.py --base_path ../img \
+nohup python GenData.py --base_path ../img/ \
 --ROOT_DIR ../Mask_RCNN \
 --WIDTH 216 \
 --HEIGHT 216 \
