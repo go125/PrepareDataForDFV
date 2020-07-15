@@ -501,7 +501,7 @@ def run_all(file_names):
 
                         img = cv2.resize(img, (WIDTH, HEIGHT))
                         img = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
-                        img = cv2.resize(img, (WIDTH, HEIGHT,3))
+                        img = cv2.cvtColor(img, cv2.COLOR_GRAY2BGR)
                         big_img[:,wct*WIDTH:(wct+1)*WIDTH] = img
                         wct+=1
                     cv2.imwrite(OUTPUT_DIR  + DIR_NAME + '/' +  imgnum + '.png', big_img)
