@@ -46,9 +46,9 @@ SEQ_LENGTH = 3
 # result step size
 STEPSIZE = 1
 #result output dir
-OUTPUT_DIR = "/home/ubuntu/data/kitti_result_all_20200714"
+OUTPUT_DIR = "/home/ubuntu/data/kitti_result_all_20200715"
 #temp data dir
-TEMP_DIR="/home/ubuntu/data/train_data_example_all_20200714/"
+TEMP_DIR="/home/ubuntu/data/train_data_example_all_20200715/"
 
 
 # In[33]:
@@ -293,8 +293,6 @@ data_dirs=["2011_09_26_drive_0001",
 "2011_10_03_drive_0042",
 "2011_10_03_drive_0047",
 "2011_10_03_drive_0058"]
-
-data_dirs=["2011_09_26_drive_0001"]
 
 def make_dataset():
     global number_list,TEMP_DIR
