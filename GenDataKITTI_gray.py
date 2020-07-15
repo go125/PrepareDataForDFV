@@ -46,9 +46,9 @@ SEQ_LENGTH = 3
 # result step size
 STEPSIZE = 1
 #result output dir
-OUTPUT_DIR = "/home/ubuntu/data/kitti_result_all_20200513"
+OUTPUT_DIR = "/home/ubuntu/data/kitti_result_all_20200714"
 #temp data dir
-TEMP_DIR="/home/ubuntu/data/train_data_example_all_20200513/"
+TEMP_DIR="/home/ubuntu/data/train_data_example_all_20200714/"
 
 
 # In[33]:
