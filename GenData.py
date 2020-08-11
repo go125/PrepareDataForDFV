@@ -157,8 +157,8 @@ def make_dataset():
     number_list=[]
     for dataset in data_dirs:
         data_year="2020"
-        data_month="06"
-        data_date="27"
+        data_month="08"
+        data_date="04"
         #Please designate these three variables if you don't use KITTI dataset
         #The value is not important
         IMAGE_DIR=base_path + dataset+ "/"
@@ -198,13 +198,13 @@ def make_dataset1(OUTPUT_DIR1,file_names,dataset,IMAGE_DIR,WIDTH,HEIGHT):
         init_height, init_width = img.shape[:2]
         
         
-        if (init_height/init_width)>(WIDTH/HEIGHT):
+        if (init_height/init_width)>(HEIGHT/WIDTH):
             small_height=int(init_height*(WIDTH/init_width))
-            img=cv2.resize(img,(WIDTH,small_height))
+            img=cv2.resize(img,(WIDTH,small_height),interpolation=cv2.INTER_NEAREST)
             img = img[(small_height//2-HEIGHT//2):(small_height//2+HEIGHT//2), 0 : WIDTH] 
         else:
             small_width=int(init_width*(HEIGHT/init_height))
-            img=cv2.resize(img,(small_width,HEIGHT))
+            img=cv2.resize(img,(small_width,HEIGHT),interpolation=cv2.INTER_NEAREST)
             img = img[0:HEIGHT,(small_width//2-WIDTH//2):(small_width//2+WIDTH//2)] 
             
             
@@ -225,13 +225,13 @@ def make_mask_images(OUTPUT_DIR2,file_names,dataset,IMAGE_DIR,WIDTH,HEIGHT):
         init_height, init_width = image.shape[:2]
         
         
-        if (init_height/init_width)>(WIDTH/HEIGHT):
+        if (init_height/init_width)>(HEIGHT/WIDTH):
             small_height=int(init_height*(WIDTH/init_width))
-            image=cv2.resize(image,(WIDTH,small_height))
+            image=cv2.resize(image,(WIDTH,small_height),interpolation=cv2.INTER_NEAREST)
             image = image[(small_height//2-HEIGHT//2):(small_height//2+HEIGHT//2), 0 : WIDTH] 
         else:
             small_width=int(init_width*(HEIGHT/init_height))
-            image=cv2.resize(image,(small_width,HEIGHT))
+            image=cv2.resize(image,(small_width,HEIGHT),interpolation=cv2.INTER_NEAREST)
             image = image[0:HEIGHT,(small_width//2-WIDTH//2):(small_width//2+WIDTH//2)] 
             
             
