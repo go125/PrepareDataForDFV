@@ -33,7 +33,7 @@ nohup python GenData.py --base_path /home/ubuntu/data/all_video/ \
 
 
 
-## Input example (My City Report)
+## Input example (My City Report, Stereo Camera)
 
 ```script
 nohup python GenData.py --base_path ../all_video/ \
